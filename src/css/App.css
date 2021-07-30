@@ -1,0 +1,46 @@
+/* a few helper classes*/
+.d-flex{display: flex;}
+.justify-center{justify-content: center;}
+.align-center{align-items: center;}
+.flex-column{flex-direction: column;}
+.align-end{align-items: flex-end;}
+.align-start{align-items: flex-start}
+.justify-between{justify-content: space-between}
+.p-20{padding: 20px;}
+.p-5{padding: 5px;}
+.d-none{display: none;}
+
+.App {
+    background-image: url("../assets/images/BG_Desktop.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@media screen and (max-width: 1152px), screen and (max-height: 1152px) {
+    .App {
+        background-image: url("../assets/images/BG_Mobile.png");
+    }
+}

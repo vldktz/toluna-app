@@ -1,0 +1,28 @@
+{
+   "question":{
+      "text":"Please let us know what is your dream vacation, so we'll fit your destination",
+      "imageURL":"https://s3-us-west-2.amazonaws.com/toluna-frontend-developer-test/images/question.jpg"
+   },
+   "answers":[
+      {
+         "text":"France",
+         "imageURL":"https://s3-us-west-2.amazonaws.com/toluna-frontend-developer-test/images/france.jpg"
+      },
+      {
+         "text":"Italy",
+         "imageURL":"https://s3-us-west-2.amazonaws.com/toluna-frontend-developer-test/images/italy.jpg"
+      },
+      {
+         "text":"United States",
+         "imageURL":"https://s3-us-west-2.amazonaws.com/toluna-frontend-developer-test/images/us.jpg"
+      },
+      {
+         "text":"Germany",
+         "imageURL":"https://tradeandinvestmentpromotion.com/wp-content/uploads/2020/12/germany.jpg"
+      },
+      {
+         "text":"Greece",
+         "imageURL":"https://www.traveldailymedia.com/assets/2021/05/shutterstock_1031949604-2.jpg"
+      }
+   ]
+}

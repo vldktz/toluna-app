@@ -1,0 +1,119 @@
+#editAnswer-wrapper{
+    width: 100%;
+    flex-grow: 1;
+}
+
+#edit-wrapper{
+    height: 60px;
+    width: 100%;
+    border: 1px solid white;
+}
+
+#file-btn{
+    padding: 8px;
+    display: flex;
+    width: 25%;
+
+}
+
+#file-btn button{
+    width: 100%;
+    font-size: 16pt;
+}
+
+#file-text{
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid white;
+    width: 25%;
+}
+
+#file-text span{
+    color: white;
+    font-size: 16pt;
+}
+
+#answer-text{
+    width: 30%;
+    display: flex;
+    padding: 8px;
+    align-items: center;
+}
+
+#answer-text input{
+    font-size: 16pt;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: white;
+}
+
+#answer-text input::placeholder{
+    color: white;
+}
+
+#save-btn{
+    width: 20%;
+}
+
+#save-btn button{
+    font-size: 16pt;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: #6FFFFAFF
+}
+
+@media screen and (max-width: 1152px), screen and (max-height: 1152px) {
+    #editAnswer-wrapper{
+        flex-grow: unset;
+    }
+    #file-input-wrapper div{
+        display: none;
+    }
+
+    #edit-wrapper{
+        flex-wrap: wrap;
+        height: 154px;
+    }
+
+    #file-btn{
+        width: 50%;
+        box-sizing: border-box;
+        height: 60%;
+        padding: 15px;
+    }
+
+    #file-btn button{
+
+        width: 100%;
+    }
+
+    #file-text{
+        display: none;
+    }
+
+
+    #answer-text{
+        width: 50%;
+        box-sizing: border-box;
+        height: 60%;
+        border-left: 1px solid white;
+    }
+
+    #answer-text input{
+        text-align: center;
+    }
+
+    #answer-text input::placeholder{
+        color: white;
+    }
+
+    #save-btn{
+        height: 40%;
+        width: 100%;
+    }
+}
