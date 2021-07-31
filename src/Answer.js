@@ -12,6 +12,10 @@ export function Answer(props) {
             setAnswer(props.answer);
     }, [props.answer]);
 
+    /**
+     * remove the answer event handler
+     * @param e
+     */
     const removeAnswer = (e) => {
         e.stopPropagation();
         dispatch({type:'DELETE_ANSWER',payload:answer});

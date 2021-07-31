@@ -68,7 +68,7 @@
 }
 
 @media screen and (max-width: 1152px), screen and (max-height: 1152px) {
-    #editAnswer-wrapper{
+    #editAnswer-wrapper.can-edit{
         flex-grow: unset;
     }
     #file-input-wrapper div{

@@ -10,7 +10,16 @@ export function Question(props){
             setQuestion(props.question)
     },[props.question])
 
+    /**
+     * question text change handler
+     * @param event
+     */
     const onQuestionChange = (event) => setQuestion({...question,text: event.target.value})
+
+    /**
+     * save question event handler
+     * @return {{payload: {imageURL: string, text: string}, type: string}}
+     */
     const saveQuestion = () => dispatch({type:'EDIT_QUESTION',payload: question});
 
     return (

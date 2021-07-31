@@ -35,33 +35,61 @@ export function AnswerEdit(props) {
 
     }
 
+    /**
+     * new answer event handler
+     * sets the state to empty answer object
+     */
     const newAnswer = () => {
         setIsNewAnswer(true);
         setCurrentAnswer({text: '', imageURL: ''});
         setTime();
     }
+
+    /**
+     * text change event handler
+     * @param event
+     */
     const onTextChange = (event) => {
         setCurrentAnswer({...currentAnswer,text: event.target.value});
         setTime();
     }
+
+    /**
+     * text trim func
+     * @param text
+     * @return {string|*}
+     */
     const cutText = (text) => text?.length > 15 ? `${text.slice(0, 15)}...` : text;
+
+    /**
+     * event handler for the proxy button in order to open the file explorer
+     */
     const onFileUploadClick = () => {
         fileUpload.current.click();
         setTime();
     }
+
+    /**
+     * save answer event handler
+     */
     const onSave = () => {
         setCanEdit(false);
         dispatch({type:isNewAnswer?'NEW_ANSWER':'EDIT_ANSWER',payload: currentAnswer});
         setCurrentAnswer({text:'',imageURL:''})
         clearTimeout(timer);
     }
+
+    /**
+     * upload file event handler
+     * this won't really work since i cant load local resources. some BE API needed here
+     * @param event
+     */
     const uploadFile = (event) => {
-        //this won't really work since i cant load local resources. some BE API needed here
         setCurrentAnswer({...currentAnswer,imageURL: event.target.value});
     }
 
     return (
-        <div id="editAnswer-wrapper" className="d-flex align-center justify-center">
+        <div id="editAnswer-wrapper" className={`d-flex align-center justify-center ${canEdit? 'can-edit' : ''}`}>
             {! canEdit?
                 <div id="answer-new" className="action-btn d-flex align-center justify-center" onClick={newAnswer}>
                     <img src={plusIcon} alt="remove"/>

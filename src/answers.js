@@ -16,10 +16,23 @@ export function Answers(props){
         }
     },[props.answers])
 
+    /**
+     * search value change event handler
+     * @param event
+     */
     const onSearchChange = (event) => {
         setSearchInput(event.target.value)
     };
+
+    /**
+     * selected answer event handler
+     * @param answer
+     */
     const onSelectAnswer = (answer) => setSelectedAnswer(answer);
+
+    /**
+     * start filter button click event handler
+     */
     const onStartFilter = () => setSearchValue(searchInput);
 
     return (

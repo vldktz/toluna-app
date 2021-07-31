@@ -7,7 +7,10 @@ import {mainReducer} from "./mainReducer";
 import {createStore} from 'redux'
 import {Provider} from "react-redux";
 
-
+/**
+ * create redux store
+ * @type {Store<unknown, Action>}
+ */
 const store = createStore(mainReducer)
 ReactDOM.render(
     <Provider store={store}>
