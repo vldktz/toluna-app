@@ -1,5 +1,5 @@
 import './css/App.css';
-import {QuestionsAndAnswers} from "./questionsAndAnswers"
+import QuestionsAndAnswers from "./questionsAndAnswers"
 function App() {
 
 

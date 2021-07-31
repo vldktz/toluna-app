@@ -1,10 +1,13 @@
 import plusIcon from "./assets/svg/plus-icon.svg";
 import React, {useEffect, useRef, useState} from "react";
 import './css/AnswerEdit.css';
+import {useDispatch} from "react-redux";
 
 export function AnswerEdit(props) {
     const [currentAnswer, setCurrentAnswer] = useState({text: '', imageURL: ''});
     const [canEdit,setCanEdit] = useState(false);
+    const [isNewAnswer,setIsNewAnswer] = useState(false);
+    const dispatch = useDispatch();
     let fileUpload = useRef(null);
     let timer;
 
@@ -12,6 +15,7 @@ export function AnswerEdit(props) {
         if (props.selectedAnswer && props.selectedAnswer.text.length > 0) {
             setCurrentAnswer(props.selectedAnswer);
             setCanEdit(true);
+            setIsNewAnswer(false);
             setTime();
         }
     }, [props.selectedAnswer])
@@ -32,17 +36,28 @@ export function AnswerEdit(props) {
     }
 
     const newAnswer = () => {
+        setIsNewAnswer(true);
         setCurrentAnswer({text: '', imageURL: ''});
         setTime();
     }
     const onTextChange = (event) => {
-        setCurrentAnswer({text: event.target.value});
+        setCurrentAnswer({...currentAnswer,text: event.target.value});
         setTime();
     }
     const cutText = (text) => text?.length > 15 ? `${text.slice(0, 15)}...` : text;
     const onFileUploadClick = () => {
         fileUpload.current.click();
         setTime();
+    }
+    const onSave = () => {
+        setCanEdit(false);
+        dispatch({type:isNewAnswer?'NEW_ANSWER':'EDIT_ANSWER',payload: currentAnswer});
+        setCurrentAnswer({text:'',imageURL:''})
+        clearTimeout(timer);
+    }
+    const uploadFile = (event) => {
+        //this won't really work since i cant load local resources. some BE API needed here
+        setCurrentAnswer({...currentAnswer,imageURL: event.target.value});
     }
 
     return (
@@ -53,7 +68,7 @@ export function AnswerEdit(props) {
                 </div>
                 :
                 <div id="edit-wrapper" className="d-flex">
-                    <input type="file" className="d-none" ref={fileUpload}/>
+                    <input type="file" className="d-none" ref={fileUpload} onChange={uploadFile}/>
                     <div id="file-btn">
                         <button onClick={onFileUploadClick}>Choose File</button>
                     </div>
@@ -65,7 +80,7 @@ export function AnswerEdit(props) {
                                placeholder="Answer text..."/>
                     </div>
                     <div id="save-btn">
-                        <button >SAVE</button>
+                        <button onClick={onSave}>SAVE</button>
                     </div>
                 </div>
             }

@@ -1,17 +1,20 @@
 import {useEffect, useState} from "react";
 import minusIcon from './assets/svg/minus-icon.svg';
 import './css/Answer.css';
+import {useDispatch} from "react-redux";
 
 export function Answer(props) {
     const [answer, setAnswer] = useState({text:'',imageURL:''});
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (props.answer)
             setAnswer(props.answer);
     }, [props.answer]);
 
-    const removeAnswer = () => {
-
+    const removeAnswer = (e) => {
+        e.stopPropagation();
+        dispatch({type:'DELETE_ANSWER',payload:answer});
     }
 
     return (

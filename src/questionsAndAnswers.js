@@ -5,19 +5,21 @@ import {Question} from "./question"
 import {Answers} from "./answers";
 
 
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
+import {connect, useDispatch, useSelector} from "react-redux";
 
-export function QuestionsAndAnswers() {
-    const [questionsAndAnswer, setQuestionsAndAnswer] = useState([])
+const QuestionsAndAnswers = () => {
+    const dispatch = useDispatch();
+    const questionsAndAnswer = useSelector(state => state);
 
     useEffect(() => {
-
         axios.get('questionsAndAnswers.json', {
             headers: {}
         }).then(resp => {
             if (resp.status === 200) {
-                localStorage.setItem('questionsAndAnswers', JSON.stringify(resp.data));
-                setQuestionsAndAnswer(resp.data)
+                //must have some unique id for all the ops in the app
+                resp.data.answers.forEach((item,index) => item.id = index);
+                dispatch({type: 'SET_QUESTION_ANSWERS', payload: resp.data})
             }
         }).catch(e => {
             console.log(e.message);
@@ -26,14 +28,14 @@ export function QuestionsAndAnswers() {
     }, [])
 
     return (
-        questionsAndAnswer.length === 0 ? '' :
+        Object.keys(questionsAndAnswer)?.length === 0 ? '' :
             <div id="questionsAnswers-wrapper">
                 <div id="inner-questionsAnswers-wrapper">
                     <div id="logo-wrapper"><img src={logo} alt=""/></div>
-                    <Question question={questionsAndAnswer.question}/>
-                    <Answers answers={questionsAndAnswer.answers}/>
+                    <Question question={questionsAndAnswer?.question}/>
+                    <Answers answers={questionsAndAnswer?.answers}/>
                 </div>
             </div>
     )
 }
-
+ export default connect()(QuestionsAndAnswers);
